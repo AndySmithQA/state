@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { useState } from 'react'
+import './App.css'
+
+export default function App() {
+  const [temperature, setTemperature] = useState(20)
+  const [count, setCount] = useState(1)
+
+  function increaseTemperature() {
+    setTemperature(temperature + 1)
+  }
+
+  function decreaseTemperature() {
+    setTemperature(temperature - 1)
+  }
+function double() {
+  setCount(count * 2)
 }
 
-export default App;
+  return (
+    <div>
+      <h1>🌡️ React Thermostat</h1>
+      <h2>{temperature}°C</h2>
+      <div>
+        <button onClick={increaseTemperature}>+</button>
+        <button onClick={decreaseTemperature}>-</button>
+      </div>
+      <div>
+        <h1>Powers of 2</h1>
+        <h2>{count.toLocaleString()}</h2>
+        <button onClick={double}>X2</button>
+      </div>
+    </div> 
+  )
+}
